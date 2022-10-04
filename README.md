@@ -46,3 +46,5 @@ Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/prese
 #Tailwind
 
 #NuxtColorMode
+
+#auto-animate
