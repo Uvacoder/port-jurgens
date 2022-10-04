@@ -57,7 +57,7 @@
 	</div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 const colorMode = useColorMode();
 
 const showColorModeMenu = ref(false);

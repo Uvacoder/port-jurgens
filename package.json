@@ -17,6 +17,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "@fortawesome/vue-fontawesome": "^3.0.1",
+    "@nuxtjs/supabase": "^0.1.27",
     "@vueuse/core": "^9.3.0",
     "@vueuse/nuxt": "^9.3.0"
   }
