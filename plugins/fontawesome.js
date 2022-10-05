@@ -5,11 +5,12 @@ import {
 	faSun,
 	faDesktop,
 	faCode,
+	faArrowUpRightFromSquare,
 } from '@fortawesome/free-solid-svg-icons';
 
 config.autoAddCss = false;
 
-library.add(faMoon, faSun, faDesktop, faCode);
+library.add(faMoon, faSun, faDesktop, faCode, faArrowUpRightFromSquare);
 
 export default defineNuxtPlugin((nuxtApp) => {
 	nuxtApp.vueApp.component('font-awesome-icon', FontAwesomeIcon, {});

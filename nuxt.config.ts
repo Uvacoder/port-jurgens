@@ -1,5 +1,11 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
+	meta: {
+		title: 'David Jurgens | Web development portfolio',
+		htmlAttrs: {
+			lang: 'en',
+		},
+	},
 	modules: [
 		'@nuxtjs/tailwindcss',
 		'@nuxtjs/color-mode',

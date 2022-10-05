@@ -17,4 +17,5 @@ module.exports = {
 			},
 		},
 	},
+	safelist: ['dark:bg-slate-600 h-full', 'bg-slate-100'],
 };

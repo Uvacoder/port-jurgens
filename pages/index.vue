@@ -1,33 +1,64 @@
 <template>
-	<section class="bg-violet-800">
-		<div class="container py-16 text-center">
-			<figure
-				v-if="profilePicture"
-				v-auto-animate
-				class="h-60 w-60 mx-auto mb-6 rounded-full overflow-hidden border-4"
+	<main>
+		<component
+			v-for="component in content"
+			:key="component.index"
+			:is="getComponent(component.type)"
+			v-bind="component.props"
+		>
+			<component
+				v-if="component.children"
+				v-for="childComponent in component.children"
+				:key="childComponent.index"
+				:is="getComponent(childComponent.type)"
+				v-bind="childComponent.props"
 			>
-				<img :src="profilePicture" />
-			</figure>
-			<h1 class="text-slate-50 font-bold text-3xl">
-				David Jurgens
-				<font-awesome-icon icon="fa-solid fa-code" class="mx-2" /> Front-end
-				developer
-			</h1>
-		</div>
-	</section>
+				<component
+					v-if="childComponent.children"
+					v-for="grandChildComponent in childComponent.children"
+					:key="grandChildComponent.index"
+					:is="getComponent(grandChildComponent.type)"
+					v-bind="grandChildComponent.props"
+				>
+					<component
+						v-if="grandChildComponent.children"
+						v-for="greatGrandChildComponent in grandChildComponent.children"
+						:key="greatGrandChildComponent.index"
+						:is="getComponent(greatGrandChildComponent.type)"
+						v-bind="greatGrandChildComponent.props"
+					>
+					</component>
+				</component>
+			</component>
+		</component>
+	</main>
 </template>
 
 <script setup lang="ts">
 const supabase = useSupabaseClient();
 
-const profilePicture = ref(null);
+const PageHero = resolveComponent('page/Hero');
+const PageSection = resolveComponent('page/Section');
+const PageColumns = resolveComponent('page/Columns');
+const PageColumn = resolveComponent('page/Column');
+const ElementsParagraph = resolveComponent('elements/Paragraph');
+const ElementsHeading = resolveComponent('elements/Heading');
+const ElementsImage = resolveComponent('elements/Image');
 
-try {
-	const { data, error } = await supabase.storage
-		.from('media')
-		.getPublicUrl('david-jurgens-frontend-developer.jpeg');
-	profilePicture.value = data.publicURL;
-} catch (error) {
+const getComponent = (componentType: string) => {
+	const component = eval(componentType);
+	return component;
+};
+
+const { data, error } = await supabase
+	.from('pages')
+	.select()
+	.textSearch('slug', `'index'`)
+	.single();
+
+if (error) {
 	console.log(error);
 }
+
+const content = data.content;
 </script>
