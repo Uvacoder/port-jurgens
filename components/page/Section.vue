@@ -1,5 +1,5 @@
 <template>
-	<section class="py-16" :class="props.styleClasses">
+	<section class="py-16" :class="props.styleClasses" :id="props.id">
 		<div class="container">
 			<slot />
 		</div>
@@ -8,6 +8,7 @@
 
 <script setup lang="ts">
 const props = defineProps<{
+	id: string;
 	styleClasses?: string;
 }>();
 </script>
