@@ -48,3 +48,7 @@ Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/prese
 #NuxtColorMode
 
 #auto-animate
+
+#formkit
+
+#sendgrid

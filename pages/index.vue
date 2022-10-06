@@ -45,6 +45,7 @@ const ElementsParagraph = resolveComponent('elements/Paragraph');
 const ElementsHeading = resolveComponent('elements/Heading');
 const ElementsImage = resolveComponent('elements/Image');
 const PortfolioItems = resolveComponent('PortfolioItems');
+const ContactForm = resolveComponent('ContactForm');
 
 const getComponent = (componentType: string) => {
 	const component = eval(componentType);

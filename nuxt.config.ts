@@ -11,6 +11,7 @@ export default defineNuxtConfig({
 		'@nuxtjs/color-mode',
 		'@vueuse/nuxt',
 		'@nuxtjs/supabase',
+		'@formkit/nuxt',
 	],
 	colorMode: {
 		preference: 'system',

@@ -357,7 +357,7 @@
     "@formkit/utils" "1.0.0-beta.11"
     "@formkit/validation" "1.0.0-beta.11"
 
-"@formkit/themes@1.0.0-beta.11":
+"@formkit/themes@1.0.0-beta.11", "@formkit/themes@^1.0.0-beta.11":
   version "1.0.0-beta.11"
   resolved "https://registry.yarnpkg.com/@formkit/themes/-/themes-1.0.0-beta.11.tgz#36441daa4ebfa1ab396ee6f9ae5a56cff42dc10d"
   integrity sha512-OmefvFoLHZLnmbuT+Mqbqr681rumc62Q08Y1g82ZxG6aXWculwQYVQfZJeJFrqrJPpccsfoSflWeAuAMWiP/Yw==
