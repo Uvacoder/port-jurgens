@@ -3,28 +3,28 @@
 		<component
 			v-for="component in content"
 			:key="component.index"
-			:is="getComponent(component.type)"
+			:is="this[component.type]"
 			v-bind="component.props"
 		>
 			<component
 				v-if="component.children"
 				v-for="childComponent in component.children"
 				:key="childComponent.index"
-				:is="getComponent(childComponent.type)"
+				:is="this[childComponent.type]"
 				v-bind="childComponent.props"
 			>
 				<component
 					v-if="childComponent.children"
 					v-for="grandChildComponent in childComponent.children"
 					:key="grandChildComponent.index"
-					:is="getComponent(grandChildComponent.type)"
+					:is="this[grandChildComponent.type]"
 					v-bind="grandChildComponent.props"
 				>
 					<component
 						v-if="grandChildComponent.children"
 						v-for="greatGrandChildComponent in grandChildComponent.children"
 						:key="greatGrandChildComponent.index"
-						:is="getComponent(greatGrandChildComponent.type)"
+						:is="this[greatGrandChildComponent.type]"
 						v-bind="greatGrandChildComponent.props"
 					>
 					</component>
@@ -46,11 +46,6 @@ const ElementsHeading = resolveComponent('elements/Heading');
 const ElementsImage = resolveComponent('elements/Image');
 const PortfolioItems = resolveComponent('PortfolioItems');
 const ContactForm = resolveComponent('ContactForm');
-
-const getComponent = (componentType: string) => {
-	const component = eval(componentType);
-	return component;
-};
 
 const { data, error } = await supabase
 	.from('pages')
