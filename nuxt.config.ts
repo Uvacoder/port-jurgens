@@ -27,4 +27,11 @@ export default defineNuxtConfig({
 			'@fortawesome/free-brands-svg-icons',
 		],
 	},
+	nitro: {
+		output: {
+			dir: 'output',
+			serverDir: 'output/server',
+			publicDir: 'output/public',
+		},
+	},
 });
