@@ -7,6 +7,7 @@ import {
 	faCode,
 	faArrowUpRightFromSquare,
 	faCopyright,
+	faSpinner,
 } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
@@ -20,7 +21,8 @@ library.add(
 	faArrowUpRightFromSquare,
 	faGithub,
 	faLinkedin,
-	faCopyright
+	faCopyright,
+	faSpinner
 );
 
 export default defineNuxtPlugin((nuxtApp) => {
