@@ -35,6 +35,17 @@
 </template>
 
 <script setup lang="ts">
+useHead({
+	title: 'David Jurgens | Web development portfolio',
+	meta: [
+		{
+			name: 'description',
+			content:
+				'I am a front-end web developer with experience in Vue and Wordpress. Have a look at my portfolio!',
+		},
+	],
+});
+
 const supabase = useSupabaseClient();
 
 const { data, error } = await supabase
