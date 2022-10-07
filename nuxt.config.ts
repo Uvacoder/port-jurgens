@@ -2,6 +2,8 @@
 export default defineNuxtConfig({
 	meta: {
 		title: 'David Jurgens | Web development portfolio',
+		description:
+			'I am a front-end web developer with experience in Vue and Wordpress. Have a look at my portfolio!',
 		htmlAttrs: {
 			lang: 'en',
 		},

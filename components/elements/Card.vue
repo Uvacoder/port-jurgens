@@ -18,6 +18,7 @@
 				v-if="!imageLoading && imageUrl"
 				:src="imageUrl"
 				class="h-80 w-full object-cover object-top"
+				:alt="props.title"
 			/>
 		</div>
 
@@ -36,7 +37,10 @@
 					target="_blank"
 					class="w-9 h-9 p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full text-center"
 				>
-					<font-awesome-icon icon="fa-solid fa-arrow-up-right-from-square" />
+					<font-awesome-icon
+						icon="fa-solid fa-arrow-up-right-from-square"
+						title="Website link"
+					/>
 				</NuxtLink>
 				<NuxtLink
 					v-if="props.githubLink"
@@ -44,7 +48,7 @@
 					target="_blank"
 					class="w-9 h-9 p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full text-center"
 				>
-					<font-awesome-icon icon="fa-solid fa-code" />
+					<font-awesome-icon icon="fa-solid fa-code" title="GitHub link" />
 				</NuxtLink>
 			</div>
 		</div>
