@@ -1,5 +1,7 @@
 <template>
-	<div class="p-6 mx-auto bg-white max-w-xl rounded-lg shadow-lg">
+	<div
+		class="p-6 mx-auto bg-white dark:bg-slate-800 max-w-xl rounded-lg shadow-lg"
+	>
 		<FormKit type="form" @submit="sendForm" submit-label="Send">
 			<FormKit type="text" name="name" label="Name" />
 			<FormKit

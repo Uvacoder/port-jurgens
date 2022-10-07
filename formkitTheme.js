@@ -4,7 +4,7 @@ const textClassification = {
 	inner:
 		'border border-slate-400 rounded-md mb-1 overflow-hidden focus-within:border-violet-800 focus-within:ring-violet-800 focus-within:ring-2 formkit-invalid:ring-2 formkit-invalid:ring-red-500 formkit-invalid:border-red-500',
 	input:
-		'w-full h-10 px-3 border-none text-base text-slate-700 placeholder-slate-400 outline-0',
+		'w-full h-10 px-3 dark:bg-slate-400 border-none text-base text-slate-900 placeholder-slate-400 outline-0',
 	help: 'text-xs text-slate-500',
 	messages: 'list-none p-0 mt-1 mb-0',
 	message: 'text-red-500 mb-1 text-xs',
@@ -72,7 +72,7 @@ export default {
 	textarea: {
 		...textClassification,
 		input:
-			'block w-full h-32 px-3 py-2 border-none text-base text-slate-700 placeholder-slate-400 rounded-md focus:border-violet-800 outline-0',
+			'block w-full h-32 px-3 py-2 dark:bg-slate-400 border-none text-base text-slate-700 placeholder-slate-400 rounded-md focus:border-violet-800 outline-0',
 	},
 	time: textClassification,
 	url: textClassification,
