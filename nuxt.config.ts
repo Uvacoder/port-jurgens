@@ -13,6 +13,15 @@ export default defineNuxtConfig({
 		'@nuxtjs/supabase',
 		'@formkit/nuxt',
 	],
+	components: {
+		dirs: [
+			{
+				path: '~/components',
+				global: true,
+			},
+			'~/components',
+		],
+	},
 	colorMode: {
 		preference: 'system',
 		fallback: 'light',
