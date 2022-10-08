@@ -1,8 +1,22 @@
 <template>
 	<div
 		class="p-6 mx-auto bg-white dark:bg-slate-800 max-w-xl rounded-lg shadow-lg"
+		v-auto-animate
 	>
-		<FormKit type="form" @submit="sendForm" submit-label="Send">
+		<div v-if="formSent" class="text-center">
+			<font-awesome-icon
+				icon="fa-solid fa-circle-check"
+				class="text-emerald-600 mb-4"
+				size="2xl"
+			/>
+			<p>Thank you for your message, I will reply as soon as possible.</p>
+		</div>
+		<FormKit
+			type="form"
+			@submit="sendForm"
+			submit-label="Send"
+			v-if="!formSent"
+		>
 			<FormKit type="text" name="name" label="Name" v-model="name" />
 			<FormKit
 				type="email"
@@ -27,10 +41,11 @@ const email = ref('');
 const name = ref('');
 const message = ref('');
 const sending = ref(false);
+const formSent = ref(false);
 
 const sendForm = async () => {
 	sending.value = true;
-	await $fetch('https://api.davidjurgens.com', {
+	const emailResponse = await $fetch('https://api.davidjurgens.com', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
@@ -43,6 +58,10 @@ const sendForm = async () => {
 							email: 'no-reply@davidjurgens.com',
 						},
 					],
+					replyTo: {
+						email: email.value,
+						name: name.value,
+					},
 				},
 			],
 			from: {
@@ -51,12 +70,18 @@ const sendForm = async () => {
 			subject: 'Form submission from davidjurgens.com',
 			content: [
 				{
-					type: 'text/plain',
-					value: `New message from: ${name.value}, ${email.value}: ${message.value}`,
+					type: 'text/html',
+					value: `<h1>New message from: ${name.value} <${email.value}></h1>`,
+				},
+				{
+					type: 'text/html',
+					value: `<p>${message.value}</p>`,
 				},
 			],
 		}),
 	});
+	console.log(emailResponse);
+	formSent.value = true;
 	sending.value = false;
 };
 </script>
