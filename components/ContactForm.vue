@@ -30,7 +30,7 @@ const sending = ref(false);
 
 const sendForm = async () => {
 	sending.value = true;
-	await $fetch('https://email.jurgens-david8261.workers.dev/', {
+	await $fetch('https://api.davidjurgens.com', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
