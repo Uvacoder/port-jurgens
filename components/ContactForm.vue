@@ -11,11 +11,19 @@
 			/>
 			<p>Thank you for your message, I will reply as soon as possible.</p>
 		</div>
+		<div v-if="formSendError" class="text-center">
+			<font-awesome-icon
+				icon="fa-solid fa-circle-xmark"
+				class="text-rose-600 mb-4"
+				size="2xl"
+			/>
+			<p>Something went wrong, please refresh the page and try again.</p>
+		</div>
 		<FormKit
 			type="form"
 			@submit="sendForm"
 			submit-label="Send"
-			v-if="!formSent"
+			v-if="!formSent && !formSendError"
 		>
 			<FormKit type="text" name="name" label="Name" v-model="name" />
 			<FormKit
@@ -40,11 +48,10 @@
 const email = ref('');
 const name = ref('');
 const message = ref('');
-const sending = ref(false);
 const formSent = ref(false);
+const formSendError = ref(false);
 
 const sendForm = async () => {
-	sending.value = true;
 	const emailResponse = await $fetch('https://api.davidjurgens.com', {
 		method: 'POST',
 		headers: {
@@ -58,12 +65,12 @@ const sendForm = async () => {
 							email: 'no-reply@davidjurgens.com',
 						},
 					],
-					replyTo: {
-						email: email.value,
-						name: name.value,
-					},
 				},
 			],
+			reply_to: {
+				email: email.value,
+				name: name.value,
+			},
 			from: {
 				email: 'no-reply@davidjurgens.com',
 			},
@@ -71,17 +78,15 @@ const sendForm = async () => {
 			content: [
 				{
 					type: 'text/html',
-					value: `<h1>New message from: ${name.value} <${email.value}></h1>`,
-				},
-				{
-					type: 'text/html',
-					value: `<p>${message.value}</p>`,
+					value: `<h1>New message from: ${name.value} ${email.value}</h1> <p>${message.value}</p>`,
 				},
 			],
 		}),
 	});
-	console.log(emailResponse);
-	formSent.value = true;
-	sending.value = false;
+	if (emailResponse === 'success') {
+		formSent.value = true;
+	} else {
+		formSendError.value = true;
+	}
 };
 </script>
