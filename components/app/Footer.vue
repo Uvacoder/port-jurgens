@@ -51,10 +51,10 @@
 			</PageColumns>
 		</section>
 	</footer>
-	<footer class="bg-slate-800 text-slate-50">
+	<div class="bg-slate-800 text-slate-50">
 		<section class="container py-4 text-sm text-slate-300">
 			<font-awesome-icon icon="fa-solid fa-copyright" /> 2022 - David jurgens |
 			All rights reserved
 		</section>
-	</footer>
+	</div>
 </template>
