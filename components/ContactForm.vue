@@ -52,40 +52,45 @@ const formSent = ref(false);
 const formSendError = ref(false);
 
 const sendForm = async () => {
-	const emailResponse = await $fetch('https://api.davidjurgens.com', {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify({
-			personalizations: [
-				{
-					to: [
-						{
-							email: 'no-reply@davidjurgens.com',
-						},
-					],
-				},
-			],
-			reply_to: {
-				email: email.value,
-				name: name.value,
+	try {
+		const emailResponse = await $fetch('https://api.davidjurgens.com', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
 			},
-			from: {
-				email: 'no-reply@davidjurgens.com',
-			},
-			subject: 'Form submission from davidjurgens.com',
-			content: [
-				{
-					type: 'text/html',
-					value: `<h1>New message from: ${name.value} ${email.value}</h1> <p>${message.value}</p>`,
+			body: JSON.stringify({
+				personalizations: [
+					{
+						to: [
+							{
+								email: 'no-reply@davidjurgens.com',
+							},
+						],
+					},
+				],
+				reply_to: {
+					email: email.value,
+					name: name.value,
 				},
-			],
-		}),
-	});
-	if (emailResponse === 'success') {
-		formSent.value = true;
-	} else {
+				from: {
+					email: 'no-reply@davidjurgens.com',
+				},
+				subject: 'Form submission from davidjurgens.com',
+				content: [
+					{
+						type: 'text/html',
+						value: `<h1>New message from: ${name.value} ${email.value}</h1> <p>${message.value}</p>`,
+					},
+				],
+			}),
+		});
+		if (emailResponse === 'success') {
+			formSent.value = true;
+		} else {
+			formSendError.value = true;
+		}
+	} catch (error) {
+		console.error(error);
 		formSendError.value = true;
 	}
 };

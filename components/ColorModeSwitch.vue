@@ -1,6 +1,6 @@
 <template>
-	<div class="absolute top-[8px] right-0">
-		<ColorScheme placeholder="" tag="span">
+	<div class="md:absolute md:top-[8px] md:right-8">
+		<ColorScheme placeholder=" " tag="span">
 			<div class="relative">
 				<div
 					class="w-9 h-9 p-2 rounded-full text-center hover:cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800"
@@ -17,7 +17,7 @@
 				</div>
 
 				<div
-					class="py-2 bg-slate-50 shadow rounded absolute top-8 right-[-5px] min-w-max z-10 dark:bg-slate-800"
+					class="py-2 bg-slate-50 shadow rounded absolute top-8 right-0 min-w-max z-10 dark:bg-slate-800"
 					v-if="showColorModeMenu"
 					v-auto-animate
 				>
