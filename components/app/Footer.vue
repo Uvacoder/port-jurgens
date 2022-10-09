@@ -44,7 +44,7 @@
 						<li
 							class="text-violet-800 dark:text-violet-400 hover:text-violet-700 dark:hover:text-violet-500"
 						>
-							<a href="contact">Contact</a>
+							<a href="#contact">Contact</a>
 						</li>
 					</ul>
 				</PageColumn>
